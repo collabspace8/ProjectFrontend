@@ -1,4 +1,4 @@
-const cardTableBody = document.getElementById("propertyBody");
+const workspaceTableBody = document.getElementById("workspaceBody");
 
 // Fetch the data and append to the table
 fetch("http://localhost:7000/card")
@@ -9,7 +9,7 @@ fetch("http://localhost:7000/card")
   });
 
 const appendData = (cardData) => {
-  cardTableBody.innerHTML = ""; // Clear previous data
+  workspaceTableBody.innerHTML = ""; // Clear previous data
 
   cardData.forEach((card) => {
     const newRow = document.createElement("tr");
@@ -17,37 +17,37 @@ const appendData = (cardData) => {
     // Populate table cells with card data
     newRow.innerHTML = `
       <td>${card.id}</td>
-      <td>${card.address}</td>
-      <td>${card.neighborhood}</td>
-      <td>${card.squarefeet}</td>
-      <td>${card.parking}</td>
-      <td>${card.publicTranspo}</td>
+      <td>${card.type}</td>
+      <td>${card.capacity}</td>
+      <td>${card.smoking}</td>
+      <td>${card.available}</td>
+      <td>${card.term}</td>
       <td>${card.price}</td>
       <td>
-       
-        <button class="editBtn">Edit</button>
-        <button class="deleteBtn">Delete</button>
-         <button class="detailBtn">Add to List</button>
-      </td>
+        
+        <button class="spaceeditBtn">Edit</button>
+        <button class="spacedeleteBtn">Delete</button>
+        <button class="spacedetailBtn">Add to List</button>
+        </td>
     `;
 
     // Add event listeners for detail, edit, and delete buttons
-    newRow.querySelector(".detailBtn").addEventListener("click", () => {
+    newRow.querySelector(".spacedetailBtn").addEventListener("click", () => {
       // Handle detail button click
     });
 
-    newRow.querySelector(".editBtn").addEventListener("click", () => {
+    newRow.querySelector(".spaceeditBtn").addEventListener("click", () => {
       // Handle edit button click
       window.localStorage.setItem("data", JSON.stringify(card));
-      window.location.href = "edit.html";
+      window.location.href = "edit-workspace.html";
     });
 
-    newRow.querySelector(".deleteBtn").addEventListener("click", () => {
+    newRow.querySelector(".spacedeleteBtn").addEventListener("click", () => {
       // Handle delete button click
       deleteCard(card.id);
     });
 
-    cardTableBody.appendChild(newRow);
+    workspaceTableBody.appendChild(newRow);
   });
 };
 
@@ -61,5 +61,5 @@ const deleteCard = (id) => {
 };
 // Handle add button click
 document.getElementById("add").addEventListener("click", () => {
-  window.location.href = "add.html";
+  window.location.href = "add-workspace.html";
 });
