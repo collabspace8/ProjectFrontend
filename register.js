@@ -2,6 +2,7 @@ function $$(name){
     return document.getElementById(name);
 }
 
+//Function to register.  Data will be saved on an array.
 function RegisterAccount(){
     var fullname = $$('reg-fullname');
     var email = $$('reg-email');
@@ -29,6 +30,7 @@ function RegisterAccount(){
     acces.selectedIndex = -1;
 }
 
+//Function to go back to Homepage
 function RegisterCancel(){
     window.location.href = "homepage.html";
 }
