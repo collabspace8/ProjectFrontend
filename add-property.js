@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${newProperty.parking}</td>
       <td>${newProperty.publicTranspo}</td>
       <td>
-      <button class="editPropertyBtn" data-property-id="${property.propertyId}">Edit</button>
+      <button class="editPropertyBtn" data-property-id="${newProperty.propertyId}">Edit</button>
       <button class="deleteBtn">Delete</button>        <button class="deleteBtn">Delete</button>
       <button class="detailBtn" onclick="location.href='add-workspace.html'">Add Workspace</button>
       <button class="detailBtn" onclick="location.href='owner-workspace.html'">View Workspace</button>
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Construct a new property object
     const newProperty = {
-      propertyId: propertyData.length + 5, // Generate unique ID for the new property
+      propertyId: propertyData.length + 1, // Generate unique ID for the new property
       address: address,
       neighborhood: neighborhood,
       squarefeet: squarefeet,
@@ -72,6 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("back").addEventListener("click", () => {
     window.location.href = "owner-property.html";
   });
+  // Handle add button click
+  document
+    .getElementById("addPropertyBtn")
+    .addEventListener("click", (event) => {
+      if (event.target.classList.contains("addWorkspaceBtn")) {
+        console.log("ID ", propertyId);
+        if (propertyId) {
+          const propertyId = event.target.getAttribute("propertyId");
+          document.getElementById("propertyId").value = propertyId; // Set propertyId in the hidden input field
+          console.log("ID ", propertyId);
+        }
+      }
+      window.location.href = "add-property.html";
+    });
 
   // Initial data append
   propertyData.forEach((property) => {

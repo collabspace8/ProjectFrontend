@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Construct a new workspace object
     const newWorkspace = {
       propertyId: propertyId,
-      workspaceId: workspaceData.length + 5, // Generate unique ID for the new workspace
+      workspaceId: workspaceData.length + 1, // Generate unique ID for the new workspace
       type: type,
       capacity: capacity,
       smoking: smoking,
