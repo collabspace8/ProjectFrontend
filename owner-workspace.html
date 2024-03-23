@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Owner Property</title>
+    <title>Owner Workspace</title>
 </head>
 
 <body>
@@ -15,22 +15,23 @@
             <ul class="nav-list">
                 <!-- <a href="owner-dashboard.html">Dashboard</a> -->
                 <a href="owner-property.html">Property</a>
-                <a href="owner-workspace.html">Workspace</a>
+                <!-- <a href="owner-workspace.html">Workspace</a> -->
                 <a href="#">Logout</a>
                 Welcome Owner
             </ul>
         </div>
-
     </header>
     <section>
+        <br>
         <h1>Owner Workspace</h1>
-        <div class="button">
-            <button id="add">Add</button>
-        </div>
-
+        <!-- <div class="button">
+            <button id="addWorkspaceBtn">Add </button>
+        </div> -->
+        <br>
         <table id="workspaceTable">
             <thead>
                 <tr>
+                    <th>Property ID</th>
                     <th>Workspace ID</th>
                     <th>Type</th>
                     <th>Capacity</th>
@@ -42,7 +43,7 @@
                 </tr>
             </thead>
             <tbody id="workspaceBody">
-                <!-- Cards will be appended here -->
+                <!-- Data will be appended here -->
             </tbody>
         </table>
     </section>
@@ -51,8 +52,8 @@
             &copy; 2024 Collab Space. All rights reserved.
         </p>
     </footer>
-    <script src="workspace.js"></script>
-
+    <!-- Include the script file -->
+    <script src="owner-workspace.js"></script>
 </body>
 
 </html>

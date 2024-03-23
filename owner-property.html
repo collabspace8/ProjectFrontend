@@ -15,17 +15,17 @@
             <ul class="nav-list">
                 <!-- <a href="owner-dashboard.html">Dashboard</a> -->
                 <a href="owner-property.html">Property</a>
-                <a href="owner-workspace.html">Workspace</a>
+                <!-- <a href="owner-workspace.html">Workspace</a> -->
                 <a href="#">Logout</a>
                 Welcome Owner
             </ul>
         </div>
-
     </header>
     <section>
+        <br>
         <h1>Owner Property</h1>
         <div class="button">
-            <button id="add">Add</button>
+            <button id="addPropertyBtn">Add Property </button>
         </div>
 
         <table id="propertyTable">
@@ -37,22 +37,22 @@
                     <th>Square Feet</th>
                     <th>Parking</th>
                     <th>Public Transportation</th>
-                    <th>Price</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody id="propertyBody">
-                <!-- Cards will be appended here -->
+                <!-- Existing table rows will be appended here -->
             </tbody>
         </table>
-        <footer>
-            <p class="center">
-                &copy; 2024 Collab Space. All rights reserved.
-            </p>
     </section>
+    <footer>
+        <p class="center">
+            &copy; 2024 Collab Space. All rights reserved.
+        </p>
     </footer>
-    <script src="owner.js"></script>
+
 
 </body>
 
 </html>
+<script src="owner-property.js"></script>

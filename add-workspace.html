@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Add Workspace</title>
 </head>
 
 <body>
     <h1>Add a new workspace</h1>
-    <form action="http://localhost:7000/card" method="post">
+    <form id="workspaceForm">
+        <input type="text" id="propertyId" name="propertyId">
         <label for="type">Type:</label><br>
         <input type="text" id="type" name="type" required><br>
         <label for="capacity">Capacity:</label><br>
-        <input type="text" id="capacity" name="capacity" required><br>
+        <input type="number" id="capacity" name="capacity" required><br>
         <label for="smoking">Smoking:</label><br>
-        <input type="number" id="smoking" name="smoking" required><br>
+        <select id="smoking" name="smoking" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
         <label for="available">Available Date:</label><br>
-        <input type="text" id="available" name="available" required><br>
-        <label for="publicTranspo">Public Transportation:</label><br>
-        <input type="text" id="publicTranspo" name="publicTranspo" required><br>
+        <input type="date" id="available" name="available" required><br>
         <label for="term">Lease Term:</label><br>
-        <input type="number" id="term" name="term" required><br><br>
-        <button type="submit">Add</button>
+        <input type="text" id="term" name="term" required><br><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" required><br><br>
+        <button id="saveWorkspaceBtn" type="submit">Save</button>
+        <button id="back" type="submit">Back</button>
     </form>
+    <script src="owner-property.js"></script>
 </body>
 
 </html>
