@@ -74,6 +74,41 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "add-property.html";
   });
 
+  // Event delegation for handling clicks on dynamically created buttons
+  document.getElementById("propertyBody").addEventListener("click", (event) => {
+    if (event.target.classList.contains("editPropertyBtn")) {
+      event.preventDefault();
+      const propertyId = event.target.getAttribute("data-property-id");
+
+      const propertyToEdit = propertyData.find(
+        (property) => property.propertyId.toString() === propertyId
+      );
+      if (propertyToEdit) {
+        sessionStorage.setItem(
+          "propertyToEdit",
+          JSON.stringify(propertyToEdit)
+        );
+        // Navigate to edit page
+        window.location.href = "edit-property.html";
+      }
+    } else if (event.target.classList.contains("deleteBtn")) {
+      // Delete button clicked
+      const row = event.target.closest("tr"); // Get the closest table row
+      const propertyId = row.getAttribute("data-property-id");
+
+      // Remove the property from propertyData array
+      propertyData = propertyData.filter(
+        (property) => property.propertyId.toString() !== propertyId
+      );
+
+      // Update sessionStorage
+      sessionStorage.setItem("propertyData", JSON.stringify(propertyData));
+
+      // Remove the row from the table
+      row.remove();
+    }
+  });
+
   // Initial data append
   appendData();
 
