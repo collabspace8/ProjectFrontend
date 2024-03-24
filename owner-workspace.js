@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to append new data to the existing table
   const appendData = (propertyId, newWorkspace) => {
     const newRow = document.createElement("tr");
+    newRow.setAttribute("data-property-id", propertyId);
+    newRow.setAttribute("data-workspace-id", newWorkspace.workspaceId);
 
     // Populate the new row with data from the newWorkspace object
     newRow.innerHTML = `
@@ -21,17 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${newWorkspace.term}</td>
       <td>${newWorkspace.price}</td>
       <td>
-        <button class="spaceeditBtn">Edit</button>
+        <button class="editWorkspaceBtn">Edit</button>
         <button class="spacedeleteBtn">Delete</button>
       </td>
     `;
     workspaceTableBody.appendChild(newRow);
 
     // Add event listener to the edit button
-    const editButton = newRow.querySelector(".spaceeditBtn");
+    const editButton = newRow.querySelector(".editWorkspaceBtn");
     editButton.addEventListener("click", () => {
       // Redirect to the edit page with appropriate parameters
-      window.location.href = `edit-workspace.html?propertyId=${propertyId}&workspaceId=${newWorkspace.workspaceId}`;
+      const workspaceId = newWorkspace.workspaceId;
+      window.location.href = `edit-workspace.html?propertyId=${propertyId}&workspaceId=${workspaceId}`;
     });
   };
 
@@ -94,13 +97,31 @@ document.addEventListener("DOMContentLoaded", () => {
     workspaceForm.reset();
   });
 
-  // Handle save button click
-  document.getElementById("saveWorkspaceBtn")?.addEventListener("click", () => {
-    window.location.href = "owner-workspace.html";
-  });
-
-  // Handle back button click
-  document.getElementById("back").addEventListener("click", () => {
-    window.location.href = "owner-property.html";
-  });
+  // Event delegation for handling clicks on dynamically created buttons
+  document
+    .getElementById("workspaceBody")
+    .addEventListener("click", (event) => {
+      if (event.target.classList.contains("editWorkspaceBtn")) {
+        event.preventDefault();
+        const propertyId = event.target
+          .closest("tr")
+          .getAttribute("data-property-id");
+        const workspaceId = event.target
+          .closest("tr")
+          .getAttribute("data-workspace-id");
+        const workspaceToEdit = propertyWorkspaceData[propertyId].find(
+          (workspace) => workspace.workspaceId.toString() === workspaceId
+        );
+        if (workspaceToEdit) {
+          sessionStorage.setItem(
+            "workspaceToEdit",
+            JSON.stringify(workspaceToEdit)
+          );
+          // Optionally, save propertyId for reference
+          sessionStorage.setItem("currentPropertyId", propertyId);
+          // Navigate to edit page
+          window.location.href = "edit-workspace.html";
+        }
+      }
+    });
 });

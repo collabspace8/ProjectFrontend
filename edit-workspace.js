@@ -1,78 +1,89 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("editWorkspaceForm");
-
-  // Retrieve workspace data from sessionStorage
-  let propertyWorkspaceData =
-    JSON.parse(sessionStorage.getItem("propertyWorkspaceData")) || {};
-
-  // Retrieve propertyId and workspaceId from URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const propertyId = urlParams.get("propertyId");
-  const workspaceId = urlParams.get("workspaceId");
-
-  // Retrieve the selected workspace data
-  const selectedWorkspace = propertyWorkspaceData[propertyId].find(
-    (workspace) => workspace.workspaceId === parseInt(workspaceId)
+  let workspaceToEdit = JSON.parse(sessionStorage.getItem("workspaceToEdit"));
+  let propertyWorkspaceData = JSON.parse(
+    sessionStorage.getItem("propertyWorkspaceData")
   );
 
-  // Populate the form fields with selected workspace data
-  if (selectedWorkspace) {
-    document.getElementById("propertyId").value = propertyId;
-    document.getElementById("type").value = selectedWorkspace.type;
-    document.getElementById("capacity").value = selectedWorkspace.capacity;
-    document.getElementById("smoking").value = selectedWorkspace.smoking;
-    document.getElementById("available").value = selectedWorkspace.available;
-    document.getElementById("term").value = selectedWorkspace.term;
-    document.getElementById("price").value = selectedWorkspace.price;
-  } else {
-    console.log("Workspace not found!");
-  }
+  // Function to populate the edit form fields with data from session storage
+  const populateFormFields = () => {
+    // Check if workspaceToEdit and propertyWorkspaceData are valid
+    if (
+      workspaceToEdit &&
+      propertyWorkspaceData &&
+      propertyWorkspaceData[workspaceToEdit.propertyId]
+    ) {
+      const workspace = propertyWorkspaceData[workspaceToEdit.propertyId].find(
+        (ws) => ws.workspaceId === workspaceToEdit.workspaceId
+      );
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
+      // Populate form fields with workspace data
+      if (workspace) {
+        document.getElementById("propertyId").value =
+          workspaceToEdit.propertyId;
+        document.getElementById("workspaceId").value =
+          workspaceToEdit.workspaceId;
+        document.getElementById("type").value = workspace.type;
+        document.getElementById("capacity").value = workspace.capacity;
+        document.getElementById("smoking").value = workspace.smoking;
+        document.getElementById("available").value = workspace.available;
+        document.getElementById("term").value = workspace.term;
+        document.getElementById("price").value = workspace.price;
+      } else {
+        console.error("Workspace not found in propertyWorkspaceData.");
+      }
+    } else {
+      console.error("Invalid workspaceToEdit or propertyWorkspaceData.");
+    }
+  };
 
-    // Retrieve updated input values from the form
-    const updatedType = document.getElementById("type").value;
-    const updatedCapacity = document.getElementById("capacity").value;
-    const updatedSmoking = document.getElementById("smoking").value;
-    const updatedAvailable = document.getElementById("available").value;
-    const updatedTerm = document.getElementById("term").value;
-    const updatedPrice = document.getElementById("price").value;
+  // Populate the form fields initially
+  populateFormFields();
 
-    // Update the selected workspace data
+  const form = document.getElementById("editForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the form from submitting traditionally
+
+    // Extract updated values directly from the form elements
     const updatedWorkspace = {
-      workspaceId: selectedWorkspace.workspaceId,
-      type: updatedType,
-      capacity: updatedCapacity,
-      smoking: updatedSmoking,
-      available: updatedAvailable,
-      term: updatedTerm,
-      price: updatedPrice,
+      workspaceId: form.workspaceId.value,
+      type: form.type.value,
+      capacity: form.capacity.value,
+      smoking: form.smoking.value,
+      available: form.available.value,
+      term: form.term.value,
+      price: form.price.value,
     };
 
-    // Update the workspace data in sessionStorage
-    propertyWorkspaceData[propertyId] = propertyWorkspaceData[propertyId].map(
-      (workspace) => {
-        if (workspace.workspaceId === updatedWorkspace.workspaceId) {
-          return updatedWorkspace;
-        }
-        return workspace;
+    // Assuming workspaceToEdit contains propertyId and workspaceId of the workspace to be edited
+    if (workspaceToEdit && propertyWorkspaceData[workspaceToEdit.propertyId]) {
+      // Find the workspace and update it within the propertyWorkspaceData
+      const workspaces = propertyWorkspaceData[workspaceToEdit.propertyId];
+      const workspaceIndex = workspaces.findIndex(
+        (ws) =>
+          ws.workspaceId.toString() === workspaceToEdit.workspaceId.toString()
+      );
+
+      if (workspaceIndex !== -1) {
+        workspaces[workspaceIndex] = updatedWorkspace;
+        sessionStorage.setItem(
+          "propertyWorkspaceData",
+          JSON.stringify(propertyWorkspaceData)
+        );
+
+        // Redirect back to the workspace overview page
+        window.location.href = "owner-workspace.html";
+      } else {
+        console.error("Workspace not found.");
       }
-    );
-
-    // Save the updated propertyWorkspaceData object to sessionStorage
-    sessionStorage.setItem(
-      "propertyWorkspaceData",
-      JSON.stringify(propertyWorkspaceData)
-    );
-
-    // Redirect to the owner-workspace.html page
-    window.location.href = "owner-workspace.html";
+    } else {
+      console.error("Invalid workspaceToEdit data.");
+    }
   });
 
   // Handle back button click
-  document.getElementById("backEditWorkspace").addEventListener("click", () => {
-    // Redirect to the owner-workspace.html page
+  document.getElementById("backEdit").addEventListener("click", () => {
+    // Redirect to the owner-property.html page
     window.location.href = "owner-workspace.html";
   });
 });

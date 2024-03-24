@@ -11,7 +11,8 @@
 <body>
     <h1>Edit Property</h1>
     <form id="editForm">
-        <input type="hidden" id="propertyId" name="propertyId">
+        <input type="text" id="propertyId" name="propertyId">
+        <input type="text" id="workspaceId" name="workspaceId">
         <label for="type">Type:</label><br>
         <input type="text" id="type" name="type" required><br>
         <label for="capacity">Capacity:</label><br>
@@ -30,7 +31,7 @@
         <button id="updateWorkspaceBtn" type="submit">Update</button>
         <button id="backEdit" type="submit">Back</button>
     </form>
-    <script src="edit.js"></script>
+    <script src="edit-workspace.js"></script>
 </body>
 
 </html>
