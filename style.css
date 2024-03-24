@@ -145,7 +145,7 @@ footer {
     cursor: pointer;
 }
 
-/* table,
+table,
 th,
 td {
     border: 1px solid black;
@@ -155,7 +155,7 @@ td {
     margin-right: auto;
     color: #373A36;
 
-} */
+}
 
 tr:nth-child(even) {
     background-color: #f2f2f2
