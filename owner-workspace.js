@@ -103,24 +103,38 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", (event) => {
       if (event.target.classList.contains("editWorkspaceBtn")) {
         event.preventDefault();
+
         const propertyId = event.target
           .closest("tr")
           .getAttribute("data-property-id");
+
         const workspaceId = event.target
           .closest("tr")
           .getAttribute("data-workspace-id");
-        const workspaceToEdit = propertyWorkspaceData[propertyId].find(
-          (workspace) => workspace.workspaceId.toString() === workspaceId
-        );
-        if (workspaceToEdit) {
-          sessionStorage.setItem(
-            "workspaceToEdit",
-            JSON.stringify(workspaceToEdit)
+        console.log("propertyWorkspaceData:", propertyWorkspaceData);
+
+        // Check if propertyWorkspaceData contains data for the given propertyId
+        if (propertyWorkspaceData.hasOwnProperty(propertyId)) {
+          // Retrieve the workspaceToEdit from the array of workspaces for the propertyId
+          const workspaceToEdit = propertyWorkspaceData[propertyId].find(
+            (workspace) => workspace.workspaceId.toString() === workspaceId
           );
-          // Optionally, save propertyId for reference
-          sessionStorage.setItem("currentPropertyId", propertyId);
-          // Navigate to edit page
-          window.location.href = "edit-workspace.html";
+          if (workspaceToEdit) {
+            // Save workspaceToEdit to session storage
+            console.log("workspaceToEdit", workspaceToEdit);
+            sessionStorage.setItem(
+              "workspaceToEdit",
+              JSON.stringify(workspaceToEdit)
+            );
+            // Optionally, save propertyId for reference
+            sessionStorage.setItem("currentPropertyId", propertyId);
+            // Navigate to edit page
+            window.location.href = "edit-workspace.html";
+          } else {
+            console.error("Workspace not found for the given workspaceId.");
+          }
+        } else {
+          console.error("No workspace data found for the given propertyId.");
         }
       }
     });
