@@ -31,30 +31,41 @@ document.addEventListener("DOMContentLoaded", () => {
       form.publicTranspo.value,
     ];
 
-    // Find the index of the property to edit in propertyData array
-    const index = propertyData.findIndex(
-      (property) => property.propertyId === propertyToEdit.propertyId
+    // Find the currently editing row by propertyId
+    const currentEditingRow = document.querySelector(
+      `#propertyBody tr[data-property-id="${updatedValues[0]}"]`
     );
 
-    if (index !== -1) {
-      // Update the property in propertyData array
-      propertyData[index] = {
-        propertyId: updatedValues[0],
-        address: updatedValues[1],
-        neighborhood: updatedValues[2],
-        squarefeet: updatedValues[3],
-        parking: updatedValues[4],
-        publicTranspo: updatedValues[5],
-      };
+    if (currentEditingRow) {
+      // Update the cells of the table row
+      const cells = currentEditingRow.querySelectorAll("td");
 
-      // Update data in sessionStorage with the updated propertyData
-      sessionStorage.setItem("propertyData", JSON.stringify(propertyData));
-
-      // Redirect to the owner-property.html page
-      window.location.href = "owner-property.html";
+      cells[1].textContent = updatedValues[1];
+      cells[2].textContent = updatedValues[2];
+      cells[3].textContent = updatedValues[3];
+      cells[4].textContent = updatedValues[4];
+      cells[5].textContent = updatedValues[5];
     } else {
-      console.log("Can't locate the property in propertyData array.");
+      console.log("Can't locate the row.");
     }
+
+    // Update data in propertyData with the updated values
+    const index = propertyData.findIndex(
+      (prop) => prop.propertyId === propertyToEdit.propertyId
+    );
+    if (index !== -1) {
+      propertyData[index].address = updatedValues[1];
+      propertyData[index].neighborhood = updatedValues[2];
+      propertyData[index].squarefeet = updatedValues[3];
+      propertyData[index].parking = updatedValues[4];
+      propertyData[index].publicTranspo = updatedValues[5];
+    }
+
+    // Update propertyData in sessionStorage
+    sessionStorage.setItem("propertyData", JSON.stringify(propertyData));
+
+    // Redirect to the owner-property.html page
+    window.location.href = "owner-property.html";
   });
 
   // Handle back button click
