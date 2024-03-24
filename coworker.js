@@ -807,6 +807,11 @@ function search() {
   window.location.href = "coworker-propertySearch.html";
 }
 
+function viewRentedWorkspaceBtn() {
+  window.location.href = "viewRentedWorkspace.html";
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
   populatePropertyTable();
 });
@@ -910,3 +915,5 @@ function viewAvailableWorkspaces(propertyId) {
 document.getElementById("logoutBtn").addEventListener("click", function() {
   window.location.href = "homepage.html"; 
 });
+
+

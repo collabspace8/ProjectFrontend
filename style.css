@@ -25,20 +25,59 @@ header {
     width: 100%;
 }
 
+.nav-list {
+  list-style-type: none;
+  margin-right: 10px; 
+}
+
+.nav-list li {
+  display: inline-block;
+  margin-left: 10px; 
+}
+
+.nav-list li:first-child {
+  margin-left: 0; 
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px !important;
+}
+
+#list-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#list-items a {
+  display: inline-block;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #373A36;
+  font-size: 30px;
+  transition: all 0.2s ease-in-out;
+}
+
+#list-items a:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
 section {
     margin-top: 70px;
     text-align: center;
 }
 
 footer {
-    background-color: #D48166;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+  background-color: #D48166;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 
@@ -146,6 +185,122 @@ tr:nth-child(even) {
 
 /*CSS for Workspace Search and Co Worker Dashboard*/
 
+/* View Rented Workspace Screen*/
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* This will place the buttons at opposite ends */
+  align-items: center; /* This will vertically center align the buttons if needed */
+  /* Add any additional styling such as padding or margins as needed */
+}
+
+.viewRentedWorkspaceBtn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: right; /* Center align the search button */
+  margin-right: 200px;
+}
+  
+.viewRentedWorkspaceBtn:hover {
+  background-color: #555;
+}
+
+/* Modal container for Rate and Feedback */
+.rateModal {
+  display: none; /* Hide the modal by default */
+  position: fixed; /* Fixed position to overlay on top of the content */
+  z-index: 1000; /* Ensure the modal appears above other elements */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling if content overflows */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+}
+
+/* Modal content */
+.rateModal-content {
+  background-color: #fefefe; /* White background */
+  margin: 10% auto; /* Center the modal vertically and horizontally */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  max-width: 500px; /* Limit the width of the modal */
+} 
+
+/* Close button */
+.closeRateModal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeRateModal:hover,
+.closeRateModal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styles (adjust as needed) */
+#rateForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#rateForm input[type="number"],
+#rateForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#rateForm button[type="submit"] {
+  background-color: #BA5A31;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#rateForm button[type="submit"]:hover {
+  background-color: #BA5A31;
+}
+
+
+.rateButton {
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 8px 20px; /* Adjust padding as needed */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.rateButton:hover {
+  background-color: black; 
+}
+
+.rateButton:active {
+  background-color: black; 
+}
+
+/*Workspace Dashboard */
 /* Modal container */
 .modal {
   display: none; /* Hidden by default */
@@ -246,6 +401,7 @@ padding: 10px 20px;
 cursor: pointer;
 border-radius: 5px;
 text-align: right; /* Center align the search button */
+margin-left: 200px;
 }
 
 .searchbtn:hover {
