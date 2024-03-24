@@ -32,7 +32,7 @@ function RegisterAccount(){
 
 //Function to go back to Homepage
 function RegisterCancel(){
-    window.location.href = "homepage.html";
+    window.location.href = "index.html";
 }
 
 

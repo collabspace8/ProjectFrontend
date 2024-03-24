@@ -913,7 +913,8 @@ function viewAvailableWorkspaces(propertyId) {
 
 
 document.getElementById("logoutBtn").addEventListener("click", function() {
-  window.location.href = "homepage.html"; 
+  window.location.href = "index.html"; 
 });
+
 
 
