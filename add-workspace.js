@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Construct a new workspace object
     const newWorkspace = {
-      propertyId:propertyId,
+      propertyId: propertyId,
       workspaceId: workspaceData.length + 1, // Increment workspace ID for the current property
       type: type,
       capacity: capacity,
