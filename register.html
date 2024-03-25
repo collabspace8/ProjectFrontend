@@ -38,13 +38,16 @@
         <label for="password">Password: </label><br>
         <input type="password" id="reg-password" name="Password" class="input-field" required><br>
         <label for="access">User Access</label><br>
-            <select name="useraccess" id="reg-useraccess">
+            <select name="useraccess" id="reg-useraccess" class="reg-useraccess">
               <option value=""></option>
               <option value="owner">Owner</option>
               <option value="co-worker">Co - Worker</option>
             </select><br><br>
         <button type="register" onclick="RegisterAccount()" class="login-btns">Register</button>
         <button type="back" onclick="RegisterCancel()" class="login-btns">Back</button>
+
+        <div id="successRegister" style="display: none;"></div>
+
     </form>
     </div>
 
