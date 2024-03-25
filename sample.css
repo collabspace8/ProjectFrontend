@@ -468,7 +468,7 @@ main {
 }
 
 .btn:hover {
-    background-color: #555;
+    background-color: #eda086;
 }
 
 .sort-button-container {
@@ -477,7 +477,7 @@ main {
 }
 
 .sort-button-container button {
-    background-color: #333;
+    background-color: #c66747;
     color: #fff;
     border: none;
     padding: 10px 20px;

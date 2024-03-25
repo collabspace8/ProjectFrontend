@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -164,7 +164,9 @@ button {
     color: white;
     border-color: white;
 }
-
+button:hover {
+    background-color: #eda086;
+}
 /* ADD FORM CSS */
 body {
     font-family: Arial, sans-serif;

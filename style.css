@@ -1,42 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: E6E2DD;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: E6E2DD;
 }
 
 header {
-    background-color: #D48166;
-    color: white;
-    text-align: center;
-    padding: 5px;
-    position: fixed;
-    top: 0;
-    width: 100%;
+  background-color: #D48166;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .nav-list {
   list-style-type: none;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .nav-list li {
   display: inline-block;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 .nav-list li:first-child {
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 .nav-list a {
@@ -66,8 +66,8 @@ header {
 }
 
 section {
-    margin-top: 70px;
-    text-align: center;
+  margin-top: 70px;
+  text-align: center;
 }
 
 footer {
@@ -83,48 +83,59 @@ footer {
 
 
 #dashboard-header {
-    text-align: right;
-    overflow: hidden;
+  text-align: right;
+  overflow: hidden;
 }
 
 
 #list-items {
-    text-align: center;
+  text-align: center;
 }
 
 #list-items a {
-    float: left;
-    display: block;
-    padding: 0 20px;
-    text-decoration: none;
-    color: #373A36;
-    font-size: 30px;
-    transition: all 0.2s ease-in-out;
+  float: left;
+  display: block;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #373A36;
+  font-size: 30px;
+  transition: all 0.2s ease-in-out;
 }
 
 #list-items a:hover {
-    color: #fff;
-    cursor: pointer;
+  color: #fff;
+  cursor: pointer;
 }
 
 table,
 th,
 td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #373A36;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #373A36;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2
+  background-color: #f2f2f2
 }
 
 .button {
-    text-align: center;
-    padding: 30px;
+  text-align: center;
+  padding: 5px;
+  background-color: #c66747;
+  color: white;
+  border-color: white;
+}
+
+.button:hover {
+  text-align: center;
+  padding: 5px;
+  background-color: #eda086;
+  color: white;
+  border-color: white;
 }
 
 /*CSS for Register and Login Screen*/
@@ -134,7 +145,7 @@ tr:nth-child(even) {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .login-form {
@@ -155,8 +166,10 @@ tr:nth-child(even) {
   margin-bottom: 20px;
 }
 
-.input-field input, .input-field select {
-  width: 600px; /* Increase the width as needed */
+.input-field input,
+.input-field select {
+  width: 600px;
+  /* Increase the width as needed */
   padding: 10px 35px 10px 35px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -167,13 +180,13 @@ tr:nth-child(even) {
   border-color: black;
 }
 
-.login-btns{
+.login-btns {
   margin: 0 2px;
   padding: 3px;
   text-align: center;
 }
 
-.login-btns:hover{
+.login-btns:hover {
   cursor: pointer;
 }
 
@@ -189,48 +202,59 @@ tr:nth-child(even) {
 
 .button-container {
   display: flex;
-  justify-content: space-between; /* This will place the buttons at opposite ends */
-  align-items: center; /* This will vertically center align the buttons if needed */
+  justify-content: space-between;
+  /* This will place the buttons at opposite ends */
+  align-items: center;
+  /* This will vertically center align the buttons if needed */
   /* Add any additional styling such as padding or margins as needed */
 }
 
 .viewRentedWorkspaceBtn {
-  background-color: #333;
+  background-color: #c66747;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  text-align: right; /* Center align the search button */
+  text-align: right;
+  /* Center align the search button */
   margin-right: 200px;
 }
-  
+
 .viewRentedWorkspaceBtn:hover {
-  background-color: #555;
+  background-color: #eda086;
 }
 
 /* Modal container for Rate and Feedback */
 .rateModal {
-  display: none; /* Hide the modal by default */
-  position: fixed; /* Fixed position to overlay on top of the content */
-  z-index: 1000; /* Ensure the modal appears above other elements */
+  display: none;
+  /* Hide the modal by default */
+  position: fixed;
+  /* Fixed position to overlay on top of the content */
+  z-index: 1000;
+  /* Ensure the modal appears above other elements */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* Enable scrolling if content overflows */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  overflow: auto;
+  /* Enable scrolling if content overflows */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
 }
 
 /* Modal content */
 .rateModal-content {
-  background-color: #fefefe; /* White background */
-  margin: 10% auto; /* Center the modal vertically and horizontally */
+  background-color: #fefefe;
+  /* White background */
+  margin: 10% auto;
+  /* Center the modal vertically and horizontally */
   padding: 20px;
   border: 1px solid #888;
   border-radius: 5px;
-  max-width: 500px; /* Limit the width of the modal */
-} 
+  max-width: 500px;
+  /* Limit the width of the modal */
+}
 
 /* Close button */
 .closeRateModal {
@@ -278,10 +302,12 @@ tr:nth-child(even) {
 
 
 .rateButton {
-  background-color: black; 
+  background-color: #c66747;
+  ;
   border: none;
   color: white;
-  padding: 8px 20px; /* Adjust padding as needed */
+  padding: 8px 20px;
+  /* Adjust padding as needed */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -293,63 +319,83 @@ tr:nth-child(even) {
 }
 
 .rateButton:hover {
-  background-color: black; 
+  background-color: #eda086;
 }
 
 .rateButton:active {
-  background-color: black; 
+  background-color: #eda086;
 }
 
 /*Workspace Dashboard */
 /* Modal container */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal content */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
+  /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
+  /* Could be more or less, depending on screen size */
 }
 
 /* Center modal */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* 10% from the top and centered */
+  margin: 10% auto;
+  /* 10% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* 80% of modal width */
-  position: relative; /* Relative position for close button */
+  width: 80%;
+  /* 80% of modal width */
+  position: relative;
+  /* Relative position for close button */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Close button */
 .close-btn {
   color: #aaa;
-  position: absolute; /* Position relative to modal content */
+  position: absolute;
+  /* Position relative to modal content */
   top: 0;
   right: 0;
   font-size: 28px;
@@ -373,7 +419,8 @@ tr:nth-child(even) {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(255, 255, 255, 0.9); /* White background with opacity */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* White background with opacity */
 }
 
 /* CSS for Enlarged Image Container */
@@ -394,25 +441,26 @@ tr:nth-child(even) {
 
 
 .searchbtn {
-background-color: #333;
-color: #fff;
-border: none;
-padding: 10px 20px;
-cursor: pointer;
-border-radius: 5px;
-text-align: right; /* Center align the search button */
-margin-left: 200px;
+  background-color: #c66747;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: right;
+  /* Center align the search button */
+  margin-left: 200px;
 }
 
 .searchbtn:hover {
-background-color: #555;
+  background-color: #eda086;
 }
 
 main {
   margin-top: 70px;
 }
 
-.dashboard-heading{
+.dashboard-heading {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -425,53 +473,57 @@ main {
   background-color: #f4f4f4;
   padding: 20px;
   border-radius: 5px;
-  width: 100%; /* Set width to 100% to occupy the entire screen */
-  max-width: 1200px; /* Limit maximum width to 1200px */
-  margin: 0 auto; /* Center the form horizontally */
+  width: 100%;
+  /* Set width to 100% to occupy the entire screen */
+  max-width: 1200px;
+  /* Limit maximum width to 1200px */
+  margin: 0 auto;
+  /* Center the form horizontally */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr));
   grid-gap: 40px;
 }
 
 .form-group {
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-display: block;
-font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"],
 .form-group select,
 .form-group input[type="date"] {
-width: 100%;
-padding: 8px;
-border-radius: 5px;
-border: 1px solid #ccc;
-box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .search-button {
-  text-align: center; /* Center align the search button */
+  text-align: center;
+  /* Center align the search button */
 }
 
 .search-button .form-group {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .btn {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: #c66747;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .btn:hover {
-    background-color: #555;
+  background-color: #eda086;
 }
 
 .sort-button-container {
@@ -480,7 +532,7 @@ box-sizing: border-box;
 }
 
 .sort-button-container button {
-  background-color: #333;
+  background-color: #c66747;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -489,12 +541,13 @@ box-sizing: border-box;
 }
 
 .sort-button-container button:hover {
-  background-color: #555;
+  background-color: #eda086;
 }
 
 /* Image styles */
 table img {
-  max-width: 100px; /* Adjust the maximum width as needed */
+  max-width: 100px;
+  /* Adjust the maximum width as needed */
   height: auto;
 }
 
@@ -508,16 +561,21 @@ table img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
-  z-index: 999; /* Ensure the overlay appears above other content */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Semi-transparent overlay */
+  z-index: 999;
+  /* Ensure the overlay appears above other content */
 }
 
 /* CSS for Enlarged Image */
 .enlarge-image-container img {
-  max-width: 90%; /* Adjust as needed */
-  max-height: 90vh; /* Adjust as needed */
+  max-width: 90%;
+  /* Adjust as needed */
+  max-height: 90vh;
+  /* Adjust as needed */
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for a nice effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* Box shadow for a nice effect */
 }
 
 
