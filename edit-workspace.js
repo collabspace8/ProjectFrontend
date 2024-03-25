@@ -1,75 +1,90 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const workspaceForm = document.getElementById("editWorkspaceForm");
-
-  // Retrieve workspace data from session storage if it exists
+  const workspaceForm = document.getElementById("workspaceForm");
   const propertyWorkspaceData =
     JSON.parse(sessionStorage.getItem("propertyWorkspaceData")) || {};
 
-  // Retrieve workspace data to edit from session storage
-  const workspaceToEdit = JSON.parse(sessionStorage.getItem("workspaceToEdit"));
+  // Retrieve propertyId from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const propertyId = urlParams.get("propertyId");
 
-  // Populate form fields with data from workspaceToEdit
-  if (workspaceToEdit) {
-    document.getElementById("editPropertyId").value =
-      workspaceToEdit.propertyId;
-    document.getElementById("editWorkspaceId").value =
-      workspaceToEdit.workspaceId;
-    document.getElementById("editType").value = workspaceToEdit.type;
-    document.getElementById("editCapacity").value = workspaceToEdit.capacity;
-    document.getElementById("editSmoking").value = workspaceToEdit.smoking;
-    document.getElementById("editAvailable").value = workspaceToEdit.available;
-    document.getElementById("editTerm").value = workspaceToEdit.term;
-    document.getElementById("editPrice").value = workspaceToEdit.price;
-  }
+  // Function to populate form fields with workspace data
+  const populateFormFields = (workspaceId) => {
+    const workspace = findWorkspaceById(
+      propertyWorkspaceData[propertyId],
+      workspaceId
+    );
+    if (workspace) {
+      document.getElementById("workspaceId").value = workspace.workspaceId;
+      document.getElementById("type").value = workspace.type;
+      document.getElementById("capacity").value = workspace.capacity;
+      document.getElementById("smoking").value = workspace.smoking;
+      document.getElementById("available").value = workspace.available;
+      document.getElementById("term").value = workspace.term;
+      document.getElementById("price").value = workspace.price;
+    } else {
+      console.error("Workspace not found for the given workspaceId.");
+    }
+  };
 
-  // Handle form submission for editing workspace
-  workspaceForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
+  // Handle form submission
+  workspaceForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form submission
 
     // Retrieve input values from the form
-    const propertyId = document.getElementById("editPropertyId").value;
-    const workspaceId = document.getElementById("editWorkspaceId").value;
-    const type = document.getElementById("editType").value;
-    const capacity = document.getElementById("editCapacity").value;
-    const smoking = document.getElementById("editSmoking").value;
-    const available = document.getElementById("editAvailable").value;
-    const term = document.getElementById("editTerm").value;
-    const price = document.getElementById("editPrice").value;
+    const workspaceId = document.getElementById("workspaceId").value;
+    const type = document.getElementById("type").value;
+    const capacity = document.getElementById("capacity").value;
+    const smoking = document.getElementById("smoking").value;
+    const available = document.getElementById("available").value;
+    const term = document.getElementById("term").value;
+    const price = document.getElementById("price").value;
 
-    // Retrieve existing workspace data for the current property ID
-    const workspaceData = propertyWorkspaceData[propertyId] || [];
+    // Update the workspace data in propertyWorkspaceData
+    const workspaces = propertyWorkspaceData[propertyId];
+    const index = workspaces.findIndex(
+      (workspace) => workspace.workspaceId === workspaceId
+    );
+    if (index !== -1) {
+      workspaces[index] = {
+        workspaceId,
+        type,
+        capacity,
+        smoking,
+        available,
+        term,
+        price,
+      };
+    }
 
-    // Find the index of the workspace to edit
-    const workspaceIndex = workspaceData.findIndex(
-      (ws) => ws.workspaceId === workspaceId
+    // Save the updated propertyWorkspaceData to session storage
+    sessionStorage.setItem(
+      "propertyWorkspaceData",
+      JSON.stringify(propertyWorkspaceData)
     );
 
-    // Update the workspace object
-    if (workspaceIndex !== -1) {
-      workspaceData[workspaceIndex] = {
-        propertyId: propertyId,
-        workspaceId: workspaceId,
-        type: type,
-        capacity: capacity,
-        smoking: smoking,
-        available: available,
-        term: term,
-        price: price,
-      };
-
-      // Update the propertyWorkspaceData object
-      propertyWorkspaceData[propertyId] = workspaceData;
-
-      // Save the updated propertyWorkspaceData object to session storage
-      sessionStorage.setItem(
-        "propertyWorkspaceData",
-        JSON.stringify(propertyWorkspaceData)
-      );
-
-      // Redirect back to the workspace overview page
-      window.location.href = "owner-workspace.html";
-    } else {
-      console.error("Workspace not found for editing.");
-    }
+    // Redirect to the owner-workspace.html page
+    window.location.href = "owner-workspace.html";
   });
+
+  // Handle back button click
+  document.getElementById("backEdit").addEventListener("click", () => {
+    // Redirect to the owner-workspace.html page
+    window.location.href = "owner-workspace.html";
+  });
+
+  // Handle edit button click in the workspace table
+  document
+    .getElementById("workspaceBody")
+    .addEventListener("click", (event) => {
+      if (event.target.classList.contains("editWorkspaceBtn")) {
+        event.preventDefault();
+        const workspaceId = event.target.dataset.workspaceId;
+        populateFormFields(workspaceId);
+      }
+    });
 });
+
+// Function to find a workspace by ID within an array of workspaces
+const findWorkspaceById = (workspaces, workspaceId) => {
+  return workspaces.find((workspace) => workspace.workspaceId === workspaceId);
+};
